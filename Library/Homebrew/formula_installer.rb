@@ -205,7 +205,7 @@ class FormulaInstaller
   end
 
   def install_dependency dep
-    dep_tab = Tab.for_formula(dep)
+    dep_tab = Tab.for_formula(dep.to_formula)
     dep_options = dep.options
     dep = dep.to_formula
 
@@ -518,6 +518,7 @@ class FormulaInstaller
       puts "The offending files are:"
       puts non_exes
       @show_summary_heading = true
+      Homebrew.failed = true # fatal to Brew Bot
     end
   end
 
@@ -532,6 +533,7 @@ class FormulaInstaller
       puts "The offending files are:"
       puts non_exes
       @show_summary_heading = true
+      Homebrew.failed = true # fatal to Brew Bot
     end
   end
 
